@@ -1,9 +1,18 @@
 import React from 'react'
+
+import { useAppContext } from "./context";
+
 import Box from '@mui/material/Box';
 
 import SearchNavbar from './component/SearchNavbar'
 
 function App() {
+
+  const [controller] = useAppContext();
+  const { query, status } = controller;
+
+  console.log(query)
+  console.log(status)
 
   return (
     <Box

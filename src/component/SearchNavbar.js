@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+import { useAppContext, setQuery, setStatus } from "../context";
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -47,10 +49,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => (
 
 function SearchNavbar() {
 
+  const [controller, dispatch] = useAppContext();
+  const {query} = controller
+
+  const [val, setVal] = useState(query.value)
+
+  const handleOnChange = (e) => {
+    setVal(e.target.value)
+  }
+
+  const handleOnSubmit = async (e) => {
+		e.preventDefault()
+    if (val !== '') {
+      setStatus(dispatch, 'fetching')
+      setQuery(dispatch, {value:val})
+    }
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar component="form" role="form">
+        <Toolbar component="form" role="form" onSubmit={handleOnSubmit}>
           
           <Typography
             variant="h6"
@@ -68,6 +87,8 @@ function SearchNavbar() {
             <StyledInputBase
               placeholder="Search User or Organization…"
               inputProps={{ 'aria-label': 'search' }}
+              value={val}
+              onChange={handleOnChange}
             />
           </Search>
           <Box ml={2}>
