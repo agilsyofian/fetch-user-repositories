@@ -41,8 +41,19 @@ function ListUserRepositories({data}) {
 
   const collapseItem = (
 		<Collapse in={open} timeout="auto" unmountOnExit>
-      {error && (<Box display="flex" justifyContent="center" mt={2}>
-        {`oppss...!!! ${error.msg}`}
+      {error && (<Box display="block" justifyContent="center" mt={2}>
+        <>
+          <Box>
+          {`${error.msg}`}
+          </Box>
+          <Box>
+            API rate limit exceeded. 
+            (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.
+          </Box>
+          <Link href='https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting' target="_blank">
+            https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting
+          </Link>
+        </>
       </Box>)}
       <Box display="flex" justifyContent="end" mt={2}>
         {repo && `${repo.length > 1 ? `show : ${repo.length} repositories` : `show : ${repo.length} repository`}`}
