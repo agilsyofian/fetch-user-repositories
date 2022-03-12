@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Box from '@mui/material/Box';
+
+import SearchNavbar from './component/SearchNavbar'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+        sx={{
+          width: '100vw',
+          height: '100vh',
+        }}
+      >
+      <SearchNavbar />
+      <Box display="flex" justifyContent="center" pt={3}>
+        <Box
+          display="grid"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          height="70vh"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Welcome... !
+        </Box>
+      </Box>
+    </Box>
+  )
 }
 
 export default App;
