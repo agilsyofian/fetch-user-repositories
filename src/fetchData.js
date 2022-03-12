@@ -12,7 +12,8 @@ const fetchData = async (methodReq, urlReq, databody, header) => {
 
 		return response
 	} catch (error) {
-		return {status : 'error'}
+		console.log(error)
+		return {status : 'error', msg: error}
 	}
 	
 };

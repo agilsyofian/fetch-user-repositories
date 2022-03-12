@@ -60,7 +60,7 @@ function SearchNavbar() {
 
   const handleOnSubmit = async (e) => {
 		e.preventDefault()
-    if (val !== '') {
+    if (val !== '' && val !== query.value) {
       setStatus(dispatch, 'fetching')
       setQuery(dispatch, {value:val})
     }
